@@ -340,6 +340,39 @@
       margin-bottom: 1.25rem;
     }
 
+    .about-photo {
+      margin: 0;
+      position: sticky;
+      top: 5rem;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      box-shadow: 0 1px 2px rgba(20, 24, 29, 0.04), 0 10px 30px rgba(20, 24, 29, 0.08);
+    }
+
+    .about-photo figcaption {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--charcoal-mute);
+      margin-top: 0.9rem;
+      font-variation-settings: "SOFT" 60;
+      letter-spacing: 0;
+      text-align: right;
+    }
+
+    @media (max-width: 840px) {
+      .about-photo {
+        position: static;
+        max-width: 420px;
+        margin: 0 auto 2rem;
+      }
+    }
+
     .about-body p:first-of-type::first-letter {
       font-family: var(--serif);
       font-size: 3.6em;
@@ -655,6 +688,56 @@
 
     .article-list a:hover .article-arrow {
       transform: translate(4px, -4px);
+    }
+
+    .writing-subhead {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+      font-weight: 500;
+      font-variation-settings: "SOFT" 50;
+      color: var(--charcoal);
+      margin-top: 3.5rem;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .writing-subhead-meta {
+      font-size: 0.82rem;
+      color: var(--charcoal-mute);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .speaking-list {
+      list-style: none;
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .speaking-list li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .speaking-list li:last-child {
+      border-bottom: none;
+    }
+
+    .speaking-venue {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--sienna);
+      font-variation-settings: "SOFT" 60;
+      letter-spacing: 0;
     }
 
     /* ─────────── Projects ─────────── */
@@ -1093,7 +1176,10 @@
       </div>
       <div class="about-grid">
         <div class="about-side reveal">
-          <!-- left column intentionally light — the heading sits above and space carries the weight -->
+          <figure class="about-photo">
+            <img src="kris-photo.jpg" alt="Kristopher Wong with his partner Anna and their French bulldog, at golden hour outdoors" loading="lazy">
+            <figcaption>Kris, Anna, and Frenchie</figcaption>
+          </figure>
         </div>
         <div class="about-body reveal">
           <p>
@@ -1104,6 +1190,9 @@
           </p>
           <p>
             Outside of shipping Navigator, I co-author FinOps Foundation guidance on SaaS and Microsoft licensing, and I build tooling for product managers. My open-source project <strong>CorticalStack</strong> is an Obsidian-backed "second brain" that turns Shape Up-style product work into unlimited context for AI agents, while producing AI-native PRDs and specs that agents can implement directly.
+          </p>
+          <p>
+            Before Navigator, I spent nearly a decade on software licensing work with tier-1 publishers — Oracle, IBM, and Microsoft contract negotiations, license optimization, and audit defense. At the <strong>Canadian Medical Association</strong>, I led a full-operations program review whose analysis contributed to CMA's 2018 divestiture of <strong>MD Financial Management</strong> to Scotiabank for <strong>$2.585B</strong>.
           </p>
           <p>
             I'm equally at home authoring a PRD, running discovery with a reseller in EMEA, and walking a regional sales team through channel economics. If any of that sounds like your kind of operator, <a href="#contact">let's talk</a>.
@@ -1336,6 +1425,24 @@
             </div>
             <div class="article-arrow">↗</div>
           </a>
+        </li>
+      </ul>
+
+      <h3 class="writing-subhead reveal">Selected speaking</h3>
+      <ul class="speaking-list reveal">
+        <li>
+          <div>
+            <div class="article-title">"Art of War: Winning the Software Audit"</div>
+            <div class="article-meta">IAITAM · Software Asset Management Conference</div>
+          </div>
+          <div class="speaking-venue">Past speaker</div>
+        </li>
+        <li>
+          <div>
+            <div class="article-title">"Negotiating a Software Audit"</div>
+            <div class="article-meta">IAITAM · Software Asset Management Conference</div>
+          </div>
+          <div class="speaking-venue">Past speaker</div>
         </li>
       </ul>
     </div>
