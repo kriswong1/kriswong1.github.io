@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kristopher Wong — Product Director, Surveil</title>
+  <meta name="description" content="Product leader at Surveil. FinOps contributor. Building intelligence products for the Microsoft channel.">
+  <meta property="og:title" content="Kristopher Wong — Product Director, Surveil">
+  <meta property="og:description" content="Product leader at Surveil. FinOps contributor. Building intelligence products for the Microsoft channel.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..800,0..100&family=Figtree:wght@300..700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F4F4F0;
+      --cream-light: #FAFAF7;
+      --cream-warm: #EAE9E3;
+      --paper: #EFEEE9;
+      --charcoal: #13171D;
+      --charcoal-soft: #353B45;
+      --charcoal-mute: #6A7280;
+      --sienna: #1F3A5F;
+      --sienna-deep: #142642;
+      --sienna-soft: #3D5A82;
+      --gold: #8FA3BF;
+      --tan: #D4D2CA;
+      --border: #DBD9D1;
+      --border-soft: #E8E6DF;
+
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --max: 1160px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.55;
+      font-size: 17px;
+      font-weight: 400;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Very subtle neutral grain — quieter for modern feel */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.22;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.10  0 0 0 0 0.14  0 0 0 0.07 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+
+    /* Cool subtle glow behind hero */
+    body::after {
+      content: '';
+      position: absolute;
+      top: -240px;
+      right: -240px;
+      width: 820px;
+      height: 820px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31, 58, 95, 0.09) 0%, rgba(31, 58, 95, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─────────── Navigation ─────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      background: rgba(244, 238, 226, 0.78);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-variation-settings: "SOFT" 60;
+    }
+
+    .nav-brand em {
+      color: var(--sienna);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a {
+      color: var(--charcoal-soft);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--sienna);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1.5px;
+      background: var(--sienna);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        gap: 1.1rem;
+        font-size: 0.8rem;
+      }
+      .nav-links li:nth-child(n+4) { display: none; }
+    }
+
+    /* ─────────── Hero ─────────── */
+    .hero {
+      padding: clamp(4rem, 11vh, 8rem) 0 clamp(4rem, 9vh, 7rem);
+      position: relative;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      margin-bottom: 2rem;
+    }
+
+    .hero-kicker::before {
+      content: '';
+      width: 30px;
+      height: 1.5px;
+      background: var(--sienna);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3.2rem, 9vw, 7.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      color: var(--charcoal);
+      font-variation-settings: "SOFT" 20, "opsz" 144;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-name .accent {
+      font-style: italic;
+      font-variation-settings: "SOFT" 50, "opsz" 144;
+      color: var(--sienna);
+      font-weight: 300;
+    }
+
+    .hero-tag {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+      line-height: 1.45;
+      color: var(--charcoal-soft);
+      max-width: 40ch;
+      font-variation-settings: "SOFT" 30, "opsz" 24;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--cream-light);
+      border: 1.5px solid var(--charcoal);
+    }
+
+    .btn-primary:hover {
+      background: var(--sienna);
+      border-color: var(--sienna);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--charcoal);
+      transform: translateY(-1px);
+    }
+
+    .btn .arr {
+      transition: transform 0.25s ease;
+    }
+    .btn:hover .arr { transform: translateX(3px); }
+
+    /* ─────────── Sections ─────────── */
+    section {
+      padding: clamp(4rem, 10vh, 7rem) 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-num {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--sienna);
+      font-feature-settings: "tnum";
+      letter-spacing: 0.05em;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--charcoal);
+      font-variation-settings: "SOFT" 20, "opsz" 72;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--sienna-deep);
+      font-variation-settings: "SOFT" 50, "opsz" 72;
+    }
+
+    /* ─────────── About ─────────── */
+    #about {
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    @media (max-width: 840px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .about-body p {
+      font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--charcoal-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-body p:first-of-type::first-letter {
+      font-family: var(--serif);
+      font-size: 3.6em;
+      font-weight: 400;
+      float: left;
+      line-height: 0.85;
+      margin: 0.1em 0.08em 0 -0.04em;
+      color: var(--sienna);
+      font-variation-settings: "SOFT" 100;
+    }
+
+    .about-body strong {
+      color: var(--charcoal);
+      font-weight: 600;
+    }
+
+    /* ─────────── Case Study ─────────── */
+    #work {
+      background: var(--paper);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .case-header {
+      margin-bottom: 3rem;
+    }
+
+    .case-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .case-meta .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sienna);
+    }
+
+    .case-lede {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+      line-height: 1.4;
+      font-weight: 300;
+      color: var(--charcoal);
+      max-width: 54ch;
+      font-variation-settings: "SOFT" 80;
+      margin-top: 1.5rem;
+    }
+
+    /* Metric strip */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 3rem 0;
+      box-shadow: 0 8px 24px -12px rgba(31, 29, 24, 0.12);
+    }
+
+    .metric {
+      background: var(--cream-light);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--sienna-deep);
+      font-variation-settings: "SOFT" 40, "opsz" 72;
+      margin-bottom: 0.6rem;
+      font-feature-settings: "tnum" 0;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 840px) {
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .metrics { grid-template-columns: 1fr; }
+    }
+
+    /* Case body */
+    .case-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .case-section:last-child { padding-bottom: 0; }
+
+    @media (max-width: 780px) {
+      .case-section { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+    }
+
+    .case-section-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--sienna-deep);
+      letter-spacing: 0.01em;
+      font-variation-settings: "SOFT" 60;
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+    }
+
+    .case-section-body {
+      font-size: 1.02rem;
+      line-height: 1.68;
+      color: var(--charcoal-soft);
+    }
+
+    .case-section-body p + p { margin-top: 1rem; }
+    .case-section-body strong { color: var(--charcoal); font-weight: 600; }
+
+    .pillar-list {
+      list-style: none;
+      display: grid;
+      gap: 1.1rem;
+      margin-top: 1.25rem;
+    }
+
+    .pillar-list li {
+      padding-left: 1.75rem;
+      position: relative;
+    }
+
+    .pillar-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      background: var(--sienna);
+      transform: rotate(45deg);
+    }
+
+    .pillar-list strong {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.08rem;
+      color: var(--charcoal);
+      font-variation-settings: "SOFT" 80;
+    }
+
+    .shipped-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
+    }
+
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: var(--cream-warm);
+      color: var(--charcoal-soft);
+      border: 1px solid var(--border);
+      letter-spacing: 0.01em;
+    }
+
+    /* ─────────── Previously (timeline) ─────────── */
+    .timeline {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-soft);
+      align-items: baseline;
+      transition: background 0.2s ease;
+    }
+
+    .tl-row:hover {
+      background: rgba(181, 97, 60, 0.03);
+    }
+
+    @media (max-width: 780px) {
+      .tl-row {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+        padding: 1.25rem 0;
+      }
+    }
+
+    .tl-years {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--sienna);
+      font-feature-settings: "tnum";
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    .tl-title {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      font-variation-settings: "SOFT" 60;
+    }
+
+    .tl-company {
+      font-size: 0.95rem;
+      color: var(--charcoal-mute);
+      font-weight: 500;
+    }
+
+    .cv-link {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--sienna-deep);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid var(--sienna);
+      transition: color 0.2s ease;
+    }
+
+    .cv-link:hover { color: var(--sienna); }
+
+    /* ─────────── Writing ─────────── */
+    #writing {
+      background: var(--paper);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .article-list {
+      list-style: none;
+      display: grid;
+      gap: 0;
+      margin-top: 0.5rem;
+    }
+
+    .article-list a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      text-decoration: none;
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--border-soft);
+      transition: padding 0.2s ease, color 0.2s ease;
+    }
+
+    .article-list a:hover {
+      padding-left: 0.5rem;
+      color: var(--sienna-deep);
+    }
+
+    .article-title {
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      font-weight: 500;
+      line-height: 1.25;
+      font-variation-settings: "SOFT" 60;
+    }
+
+    .article-meta {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--charcoal-mute);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-arrow {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--sienna);
+      transition: transform 0.2s ease;
+    }
+
+    .article-list a:hover .article-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    /* ─────────── Projects ─────────── */
+    .project-card {
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      box-shadow: 0 14px 40px -24px rgba(31, 29, 24, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--sienna) 0%, var(--sienna-soft) 100%);
+    }
+
+    .project-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .project-name {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 500;
+      font-variation-settings: "SOFT" 60;
+      color: var(--charcoal);
+      letter-spacing: -0.015em;
+    }
+
+    .project-name em {
+      font-style: italic;
+      color: var(--sienna);
+      font-variation-settings: "SOFT" 100;
+      font-weight: 400;
+    }
+
+    .project-role {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      font-weight: 500;
+    }
+
+    .project-body {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--charcoal-soft);
+      margin-bottom: 1.5rem;
+      max-width: 62ch;
+    }
+
+    .project-architecture {
+      background: var(--cream-warm);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.35rem;
+      margin: 0.5rem 0 1.5rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .arch-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--charcoal-mute);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+
+    .arch-label.small {
+      font-size: 0.68rem;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--serif);
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      font-variation-settings: "SOFT" 20;
+      line-height: 1.5;
+    }
+
+    .arch-flow.main { font-size: 1.12rem; }
+
+    .arch-flow .sep {
+      color: var(--sienna);
+      font-size: 0.85em;
+      margin: 0 0.08rem;
+    }
+
+    .arch-flow .stage { letter-spacing: 0.005em; }
+
+    .arch-flow .stage.branch-point {
+      color: var(--sienna-deep);
+      border-bottom: 2px solid var(--sienna);
+      padding-bottom: 1px;
+    }
+
+    .arch-branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.15rem 1.25rem;
+      background: var(--cream-light);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+    }
+
+    .branch { display: grid; gap: 0.35rem; }
+
+    .branch-origin {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--charcoal-mute);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .branch-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--sienna-deep);
+      font-variation-settings: "SOFT" 50;
+      margin-bottom: 0.15rem;
+    }
+
+    .branch-note {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--charcoal-soft);
+      line-height: 1.5;
+      margin-top: 0.3rem;
+    }
+
+    .branch-note strong {
+      color: var(--sienna-deep);
+      font-weight: 600;
+    }
+
+    .sub-branch {
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed var(--border);
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .sub-branch-connector {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--charcoal-mute);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sub-branch-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--sienna-deep);
+      font-variation-settings: "SOFT" 50;
+      margin-bottom: 0.1rem;
+    }
+
+    .sub-branch-schema {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--charcoal-soft);
+      line-height: 1.5;
+    }
+
+    .arch-flow .stage.muted {
+      color: var(--charcoal-mute);
+      opacity: 0.78;
+    }
+
+    .arch-feeders {
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .feeder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 1.5rem;
+    }
+
+    .feeder {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .feeder-name {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      min-width: 72px;
+    }
+
+    .feeder-flow {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--charcoal-soft);
+      font-variation-settings: "SOFT" 30;
+    }
+
+    @media (max-width: 640px) {
+      .arch-branches { grid-template-columns: 1fr; gap: 1.1rem; }
+      .feeder-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--sienna-deep);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid var(--sienna);
+      transition: color 0.2s ease;
+    }
+
+    .project-link:hover { color: var(--sienna); }
+
+    /* ─────────── Contact ─────────── */
+    #contact {
+      text-align: left;
+      padding-bottom: 5rem;
+    }
+
+    .contact-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 780px) {
+      .contact-block { grid-template-columns: 1fr; }
+    }
+
+    .contact-pitch {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+      line-height: 1.35;
+      font-weight: 300;
+      color: var(--charcoal-soft);
+      font-variation-settings: "SOFT" 80;
+      max-width: 34ch;
+    }
+
+    .contact-pitch em {
+      font-style: italic;
+      color: var(--sienna);
+      font-variation-settings: "SOFT" 100;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .contact-row:first-child { border-top: 1px solid var(--border-soft); }
+
+    .contact-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal-mute);
+      font-weight: 500;
+    }
+
+    .contact-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 500;
+      font-variation-settings: "SOFT" 60;
+      transition: color 0.2s ease;
+      word-break: break-word;
+    }
+
+    .contact-value:hover { color: var(--sienna); }
+
+    /* ─────────── Footer ─────────── */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 2rem 0 2.5rem;
+      font-size: 0.82rem;
+      color: var(--charcoal-mute);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer em {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--sienna);
+      font-variation-settings: "SOFT" 100;
+    }
+
+    /* ─────────── Scroll reveal ─────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--sienna);
+      color: var(--cream-light);
+    }
+
+    /* Links in prose */
+    .about-body a,
+    .case-section-body a {
+      color: var(--sienna-deep);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--sienna);
+      padding-bottom: 1px;
+      transition: color 0.2s ease;
+    }
+
+    .about-body a:hover,
+    .case-section-body a:hover { color: var(--sienna); }
+
+    /* Focus states */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--sienna);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">Kristopher <em>Wong</em></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="top"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-kicker reveal">Product Director · Surveil · Ottawa</div>
+      <h1 class="hero-name reveal">
+        Kristopher <span class="accent">Wong</span>
+      </h1>
+      <p class="hero-tag reveal">
+        Product leader at Surveil. FinOps contributor. Building intelligence products for the Microsoft channel.
+      </p>
+      <div class="hero-ctas reveal">
+        <a href="#work" class="btn btn-primary">
+          See my work <span class="arr">→</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">01 —</span>
+        <h2 class="section-title">A little <em>about me</em></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-side reveal">
+          <!-- left column intentionally light — the heading sits above and space carries the weight -->
+        </div>
+        <div class="about-body reveal">
+          <p>
+            I'm a product leader with 15+ years working across the Microsoft cloud, licensing, and partner channel — now building AI-augmented SaaS at the category level. Today I lead <strong>Navigator</strong> at Surveil, the product defining the <strong>Partner Sales Intelligence</strong> category for distributors, resellers, and MSPs.
+          </p>
+          <p>
+            My work sits at the intersection of messy real-world partner economics and rigorous, AI-augmented product thinking. I believe the best products reduce the user's mental load — which is why I've steered Navigator toward intelligent automation over chatbots, and why I spend about a third of my week in structured discovery with partners and customers.
+          </p>
+          <p>
+            Outside of shipping Navigator, I co-author FinOps Foundation guidance on SaaS and Microsoft licensing, and I build tooling for product managers. My open-source project <strong>CorticalStack</strong> is an Obsidian-backed "second brain" that turns Shape Up-style product work into unlimited context for AI agents, while producing AI-native PRDs and specs that agents can implement directly.
+          </p>
+          <p>
+            I'm equally at home authoring a PRD, running discovery with a reseller in EMEA, and walking a regional sales team through channel economics. If any of that sounds like your kind of operator, <a href="#contact">let's talk</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / CASE STUDY -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">02 —</span>
+        <h2 class="section-title">Selected <em>work</em></h2>
+      </div>
+
+      <div class="case-header reveal">
+        <div class="case-meta">
+          <span>Case Study</span>
+          <span class="dot"></span>
+          <span>Surveil · 2023 – Present</span>
+        </div>
+        <h3 class="section-title" style="font-size: clamp(1.7rem, 3.5vw, 2.5rem);">
+          Navigator — <em>defining a category</em><br>for the Microsoft channel
+        </h3>
+        <p class="case-lede">
+          The Microsoft partner ecosystem runs on fragmented data across billing platforms, CRMs, and vendor portals. Navigator turns that mess into revenue intelligence — so distributors, resellers, and MSPs can find, model, and monetize opportunities across their customer estates.
+        </p>
+      </div>
+
+      <!-- Metrics strip -->
+      <div class="metrics reveal">
+        <div class="metric">
+          <div class="metric-value">280K+</div>
+          <div class="metric-label">Organizations<br>on platform</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">50+</div>
+          <div class="metric-label">Partners<br>activated</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">3</div>
+          <div class="metric-label">Global distributor<br>wins</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">2,200+</div>
+          <div class="metric-label">Paying end<br>customers</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">$5M+</div>
+          <div class="metric-label">Partner revenue<br>surfaced</div>
+        </div>
+      </div>
+
+      <!-- Case body -->
+      <div class="case-section reveal">
+        <h4 class="case-section-title">The problem</h4>
+        <div class="case-section-body">
+          <p>
+            Partners — the distributors, resellers, and MSPs who resell Microsoft cloud at scale — were flying blind on their most important decisions. Where to invest. What to renew. When to upsell. Which customers were at risk.
+          </p>
+          <p>
+            The tools on the market were built for someone else. Direct-sales platforms (Gong, Clari) assumed teams selling their own product. Vendor-side tools (Partner Center, CloudAscent) only exposed one vendor's view. General BI (Power BI, Tableau) produced pretty dashboards with no embedded workflows. Most partners were stitching the gap with spreadsheets and manual analysis.
+          </p>
+          <p>
+            <strong>No purpose-built sales intelligence platform existed for partners themselves.</strong> That was the gap.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h4 class="case-section-title">The approach</h4>
+        <div class="case-section-body">
+          <p>
+            I structured Navigator's strategy around five reinforcing priorities — each activating at different intensities across a phased multi-year roadmap.
+          </p>
+          <ul class="pillar-list">
+            <li><strong>See It.</strong> Consolidate partner data across billing, CRM, and vendor programs into a single trusted view.</li>
+            <li><strong>Find It.</strong> Model opportunities — CSP takeovers, margin optimization, workload migration — into campaign-ready, sales-ready outputs.</li>
+            <li><strong>Do It.</strong> Orchestrate the action: renewals, pricing, referrals, partner activation — integrated into the partner's existing stack.</li>
+            <li><strong>Scale It.</strong> Self-serve onboarding, hierarchy governance, and bulk activation that turn platform adoption into a business-wide standard.</li>
+            <li><strong>Prove It.</strong> Quantify cost savings and optimization gains so partners can demonstrate their value to end customers.</li>
+          </ul>
+          <p style="margin-top: 1.5rem;">
+            Underpinning all of it: a programmatic <strong>Partner Activation Ladder (L0 → L4)</strong> that ties product leading indicators to sales outcomes and phase exit criteria, and an AI & Data Intelligence layer riding on top of a proprietary 280K-organization dataset.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h4 class="case-section-title">AI, deliberately</h4>
+        <div class="case-section-body">
+          <p>
+            I steered Navigator away from the chatbot pattern early. Slapping a conversational UI on a product rarely changes the user's mental model — it just adds a novelty surface. Instead, we're implementing AI where it reduces cognitive load on the core job.
+          </p>
+          <p>
+            The flagship example is an <strong>NLP-driven campaign builder</strong> (in beta) that collapses a 16-field configuration task into a natural-language conversation. Built on AWS Bedrock and Azure AI Foundry. Other AI work spans predictive churn scoring, cohort benchmarking across the 280K dataset, and a proprietary recommendation IP layer for Surveil's M365 and Azure products — one that outperforms Microsoft Advisor by grounding guidance in deterministic, factual evidence chains rather than probabilistic and heuristic rules.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h4 class="case-section-title">The outcomes</h4>
+        <div class="case-section-body">
+          <p>
+            Navigator went from an idea to a production platform serving <strong>50+ partners</strong> with visibility into <strong>280,000+ customers</strong>, including many of the world's biggest Indirect Providers (distributors). Paying end-customer base grew from <strong>~800 to 2,200+</strong>; Monthly Active Users grew from <strong>0 to ~800</strong> over three years.
+          </p>
+          <p>
+            A proprietary <strong>GDAP orchestration method</strong> I designed collapsed downstream partner onboarding from days to minutes — directly instrumental in winning the lion's share of new partners on the Surveil platform. Navigator has surfaced <strong>$5M+ in identified and realized partner revenue</strong> to date, and Surveil's broader M365 / Azure product suite has surfaced substantial customer cost-saving opportunities over the same period.
+          </p>
+          <div class="shipped-grid">
+            <span class="tag">Bulk Onboarding</span>
+            <span class="tag">Wallet Share Analysis</span>
+            <span class="tag">PEC Reconciliation</span>
+            <span class="tag">GDAP Orchestration</span>
+            <span class="tag">Azure / M365 Takeover Modeling</span>
+            <span class="tag">Work365 partnership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h4 class="case-section-title">My role</h4>
+        <div class="case-section-body">
+          <p>
+            I own Navigator end-to-end: product strategy, vision, PRDs, spec work, commercial modeling, EULA and contract structures, roadmap, and GTM partnership across NA and EMEA regional business leads.
+          </p>
+          <p>
+            One direct PM report. Cross-functional dotted-line influence over engineering, design, and post-sales. And about a third of my week spent in structured discovery with partners and customers — the primary input to everything else.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIOUSLY -->
+  <section id="previously">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">03 —</span>
+        <h2 class="section-title">Previously</h2>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="tl-row">
+          <div class="tl-years">2021 – 2023</div>
+          <div class="tl-title">Senior Client Success Manager</div>
+          <div class="tl-company">MetrixData 360</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2017 – 2021</div>
+          <div class="tl-title">Software Optimization / Licensing Manager</div>
+          <div class="tl-company">Long View Systems</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2016 – 2017</div>
+          <div class="tl-title">SAM Consultant</div>
+          <div class="tl-company">Beaconize Inc.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2015 – 2016</div>
+          <div class="tl-title">IT Asset Management Lead</div>
+          <div class="tl-company">RAPA Consulting</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2014 – 2015</div>
+          <div class="tl-title">Program Manager / Business Analyst</div>
+          <div class="tl-company">Canadian Medical Association — PMO</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2010 – 2014</div>
+          <div class="tl-title">IT Business Relationship Manager / Service Owner</div>
+          <div class="tl-company">General Dynamics Canada &amp; C4S</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-years">2009 – 2010</div>
+          <div class="tl-title">Business Analyst — Customer Care CoE</div>
+          <div class="tl-company">Alcatel-Lucent Canada</div>
+        </div>
+      </div>
+
+      <a href="cv.pdf" class="cv-link reveal">
+        Download the full CV <span>↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">04 —</span>
+        <h2 class="section-title">Writing &amp; <em>published work</em></h2>
+      </div>
+
+      <ul class="article-list reveal">
+        <li>
+          <a href="https://www.finops.org/wg/applying-the-finops-framework-to-saas/" target="_blank" rel="noopener">
+            <div>
+              <div class="article-title">Applying the FinOps Framework to SaaS</div>
+              <div class="article-meta">Co-author · FinOps Foundation Working Group</div>
+            </div>
+            <div class="article-arrow">↗</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.finops.org/wg/finops-for-software-as-a-service-saas/" target="_blank" rel="noopener">
+            <div>
+              <div class="article-title">FinOps for Software as a Service (SaaS)</div>
+              <div class="article-meta">Co-author · FinOps Foundation Working Group</div>
+            </div>
+            <div class="article-arrow">↗</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.finops.org/wg/microsoft-licensing-management-guide/" target="_blank" rel="noopener">
+            <div>
+              <div class="article-title">Microsoft Licensing Management Guide</div>
+              <div class="article-meta">Co-author · FinOps Foundation Working Group</div>
+            </div>
+            <div class="article-arrow">↗</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.finops.org/wg/finops-for-saas-best-practices-and-adopting-focus/" target="_blank" rel="noopener">
+            <div>
+              <div class="article-title">FinOps for SaaS: Best Practices &amp; Adopting FOCUS</div>
+              <div class="article-meta">Co-author · FinOps Foundation Working Group</div>
+            </div>
+            <div class="article-arrow">↗</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">05 —</span>
+        <h2 class="section-title">Side <em>projects</em></h2>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-head">
+          <h3 class="project-name">CorticalStack <em>— a second brain for product managers</em></h3>
+          <div class="project-role">Open Source · GitHub</div>
+        </div>
+        <p class="project-body">
+          An Obsidian-backed "second brain" structured around three pipelines. The <strong>Product</strong> pipeline runs Ryan Singer's Shape Up methodology from Idea to Pitch, then branches — at <em>Breadboard</em> into iterative <strong>Prototype</strong> generation, and at <em>Pitch</em> into <strong>PRD</strong> authoring, which further expands into structured <strong>Use Cases</strong>. <strong>Meeting</strong> and <strong>Document</strong> pipelines ingest audio, transcripts, and files as structured vault notes that feed context back into the product flow. All outputs are AI-native — PRDs, specs, and prototypes that agents can implement directly.
+        </p>
+        <div class="project-architecture">
+          <div>
+            <div class="arch-label">ShapeUp trunk · product pipeline</div>
+            <div class="arch-flow main">
+              <span class="stage">Idea</span>
+              <span class="sep">→</span>
+              <span class="stage">Frame</span>
+              <span class="sep">→</span>
+              <span class="stage">Shape</span>
+              <span class="sep">→</span>
+              <span class="stage branch-point">Breadboard</span>
+              <span class="sep">→</span>
+              <span class="stage branch-point">Pitch</span>
+            </div>
+          </div>
+
+          <div class="arch-branches">
+            <div class="branch">
+              <div class="branch-origin">↓ branches at Breadboard</div>
+              <div class="branch-name">Prototype</div>
+              <div class="arch-flow">
+                <span class="stage">In progress</span>
+                <span class="sep">→</span>
+                <span class="stage">Final</span>
+              </div>
+              <div class="branch-note">Iterative — regenerate with hints, refine through Q&amp;A, or re-run entirely from the breadboard.</div>
+            </div>
+            <div class="branch">
+              <div class="branch-origin">↓ branches at Pitch</div>
+              <div class="branch-name">PRD</div>
+              <div class="arch-flow">
+                <span class="stage">Draft</span>
+                <span class="sep">→</span>
+                <span class="stage">Review</span>
+                <span class="sep">→</span>
+                <span class="stage">Approved</span>
+                <span class="sep">→</span>
+                <span class="stage">Shipped</span>
+                <span class="sep">→</span>
+                <span class="stage muted">Archived</span>
+              </div>
+              <div class="sub-branch">
+                <div class="sub-branch-connector">↓ expands into</div>
+                <div class="sub-branch-name">Use Cases</div>
+                <div class="sub-branch-schema">actors · preconditions · main + alternative flows · business rules · source backlinks</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arch-feeders">
+            <div class="arch-label small">Ingestion pipelines · feed vault context</div>
+            <div class="feeder-grid">
+              <div class="feeder">
+                <span class="feeder-name">Meeting</span>
+                <span class="feeder-flow">Audio → Transcript → Note</span>
+              </div>
+              <div class="feeder">
+                <span class="feeder-name">Document</span>
+                <span class="feeder-flow">Input → Note</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/kriswong1/corticalstack" class="project-link" target="_blank" rel="noopener">
+          View on GitHub <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <span class="section-num">06 —</span>
+        <h2 class="section-title">Let's <em>talk</em></h2>
+      </div>
+
+      <div class="contact-block">
+        <p class="contact-pitch reveal">
+          I'm always up for a conversation about Microsoft channel economics, FinOps, or the <em>product craft</em> of building AI-augmented SaaS.
+        </p>
+
+        <div class="contact-links reveal">
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <a class="contact-value" href="mailto:kristopher.j.wong@gmail.com">kristopher.j.wong@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">LinkedIn</div>
+            <a class="contact-value" href="https://www.linkedin.com/in/kristopherwong/" target="_blank" rel="noopener">/in/kristopherwong</a>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">GitHub</div>
+            <a class="contact-value" href="https://github.com/kriswong1" target="_blank" rel="noopener">/kriswong1</a>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Based in</div>
+            <span class="contact-value" style="color: var(--charcoal-soft);">Ottawa, Canada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <span>© 2026 Kristopher Wong · Built with <em>care</em></span>
+      <span>Ottawa · Canada</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 40, 200)}ms`;
+      obs.observe(el);
+    });
+
+    // Reveal immediately above-the-fold content on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('in'), 100 + i * 120);
+      });
+    });
+  </script>
+</body>
+</html>
